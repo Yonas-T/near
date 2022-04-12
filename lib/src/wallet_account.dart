@@ -207,10 +207,10 @@ class WalletAccount {
     });
   }
 
-  Future viewMethod(String contractId, String method, Map<String, dynamic>? params) async {
+  Future viewMethod(
+      String contractId, String method, Map<String, dynamic>? params) async {
     return JsonRPC('https://rpc.testnet.near.org').call(method, params);
   }
-
 }
 
 class Signature {
@@ -341,7 +341,7 @@ class ConnectedWalletAccount extends Account {
   /// receiverId The NEAR account seeking the access key for a transaction
   /// actions The action(s) sought to gain access to
   /// localKey A local public key provided to check for access
-  /// @returns Promise<any>
+  /// @returns Future<any>
   // Future<dynamic> accessKeyForTransaction(
   //     String receiverId, List<Actn> actions, PublicKey? localKey) async {
   //   var accessKeys = await getAccessKeys();

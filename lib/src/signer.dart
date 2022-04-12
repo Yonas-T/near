@@ -50,7 +50,7 @@ class InMemorySigner extends Signer {
   /// Creates a public key for the account given
   /// accountId The NEAR account to assign a public key to
   /// networkId The targeted network. (ex. default, betanet, etc…)
-  /// @returns {Promise<PublicKey>}
+  /// @returns {Future<PublicKey>}
   ///
   @override
   Future<PublicKey> createKey(String? accountId, String? networkId) async {
@@ -63,7 +63,7 @@ class InMemorySigner extends Signer {
   /// Gets the existing public key for a given account
   /// accountId The NEAR account to assign a public key to
   /// networkId The targeted network. (ex. default, betanet, etc…)
-  /// @returns {Promise<PublicKey>} Returns the public key or null if not found
+  /// @returns {Future<PublicKey>} Returns the public key or null if not found
   @override
   Future<PublicKey> getPublicKey(String? accountId, String? networkId) async {
     KeyPair? keyPair = await keyStore.getKey(networkId!, accountId!);
@@ -74,7 +74,7 @@ class InMemorySigner extends Signer {
   /// message A message to be signed, typically a serialized transaction
   /// accountId the NEAR account signing the message
   /// networkId The targeted network. (ex. default, betanet, etc…)
-  /// @returns {Promise<Signature>}
+  /// @returns {Future<Signature>}
   @override
   // Future<Signature> signMessage(dynamic message, String? accountId, String? networkId)async {
   //       var hash = Uint8Array(sha256.sha256.array(message));
@@ -94,20 +94,20 @@ class InMemorySigner extends Signer {
 
   @override
   Future<dynamic> signMessage(
-      message, String? accountId, String? networkId) async {
-    // Uint8List hash = Uint8List.fromList(message.codeUnits);
+    message,
+    String? accountId,
+    String? networkId,
+  ) async {
     final bytes = utf8.encode(message);
-  final base64Str = base64.encode(bytes);
+    final base64Str = base64.encode(bytes);
     if (accountId == null) {
       throw Exception('InMemorySigner requires provided account id');
     }
-    KeyPair? keyPair = KeyPair(
-        secretKey:
-            'ed25519:2Wjwq5xTaRii9mGaUZSZJcKBZhsa4HadLfUjuaZwnPtDgn57a46JT3JwSudxavAtSowqk41SWRsLa3g4LwJSUumL',
-        publicKey: 'ed25519:GWK3q7JG37ji9RupLurUT9hEa5S6pqUeiq4JxNktZtN6');
-    // if (keyPair == null) {
-    //   throw Exception('Key for $accountId not found in $networkId');
-    // }
+
+    KeyPair? keyPair = await keyStore.getKey(networkId!, accountId);
+    if (keyPair == null) {
+      throw Exception('Key for $accountId not found in $networkId');
+    }
     return keyPair.sign(base64Str);
   }
 }

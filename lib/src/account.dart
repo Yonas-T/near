@@ -492,7 +492,7 @@ class Account {
   }
 
   /// publicKey The public key to be deleted
-  /// @returns {Promise<FinalExecutionOutcome>}
+  /// @returns {Future<FinalExecutionOutcome>}
   Future<FinalExecutionOutcome?> deleteKey(dynamic publicKey) {
     return signAndSendTransaction(
         accountId, [deleteKey(PublicKey.from(publicKey))]);
