@@ -96,7 +96,6 @@ class KeyPair {
     required this.secretKey,
     required this.publicKey,
   });
-  
 
   /// curve Name of elliptical curve, case-insensitive
   /// @returns Random KeyPair based on the curve
@@ -139,15 +138,19 @@ class KeyPair {
 
   sign(message) {
     // const signature = nacl.sign.detached(message, base_decode(this.secretKey));
-    
+
     Uint8List bytes = Uint8List.fromList(message.codeUnits);
-    var secretKey = 'ed25519:2Wjwq5xTaRii9mGaUZSZJcKBZhsa4HadLfUjuaZwnPtDgn57a46JT3JwSudxavAtSowqk41SWRsLa3g4LwJSUumL';
+    var secretKey =
+        'ed25519:2Wjwq5xTaRii9mGaUZSZJcKBZhsa4HadLfUjuaZwnPtDgn57a46JT3JwSudxavAtSowqk41SWRsLa3g4LwJSUumL';
     Uint8List secretKeyBytes = Uint8List.fromList(secretKey.codeUnits);
     Signature s1 = Signature(null, secretKeyBytes);
     Uint8List signature = s1.detached(bytes);
     print("signature: \"${TweetNaclFast.hexEncodeToString(signature)}\"");
 
-    return {'signature': TweetNaclFast.hexEncodeToString(signature), 'publicKey': 'ed25519:GWK3q7JG37ji9RupLurUT9hEa5S6pqUeiq4JxNktZtN6'};
+    return {
+      'signature': TweetNaclFast.hexEncodeToString(signature),
+      'publicKey': 'ed25519:GWK3q7JG37ji9RupLurUT9hEa5S6pqUeiq4JxNktZtN6'
+    };
   }
 }
 

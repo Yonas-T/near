@@ -218,8 +218,6 @@ class Transaction {
     this.blockHash,
   });
 
-  
-
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
       signerId: json['signerId'] as String,
@@ -325,7 +323,7 @@ Transaction createTransaction(String signerId, dynamic publicKey,
     String receiverId, dynamic nonce, List actions, dynamic blockHash) {
   return Transaction(
       signerId: signerId,
-      publicKey: PublicKey('ed25519', publicKey),
+      publicKey: PublicKey('ed25519', publicKey).toJson(),
       nonce: nonce,
       receiverId: receiverId,
       actions: actions,
@@ -346,7 +344,7 @@ Future signTransactionObject(Transaction transaction, Signer signer,
   var pubk = {'keyType': 0, 'data': a.publicKey};
   var transactionJson = {
     'signerId': transaction.signerId,
-    'publicKey': a.publicKey,
+    'publicKey': pubk,
     'nonce': transaction.nonce,
     'receiverId': transaction.receiverId,
     'actions': [transaction.actions[0].toJson()],

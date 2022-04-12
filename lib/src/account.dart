@@ -261,11 +261,11 @@ class Account {
       txHash = sign[0];
       signedTx = sign[1];
       var ab = tweetNacl.Box.keyPair();
-  log('______--------------________' + sign.toString());
-  var pubk = {'keyType': 0, 'data': ab.publicKey};
+      log('______--------------________' + sign.toString());
+      var pubk = {'keyType': 0, 'data': ab.publicKey};
       transact.Transaction tr = transact.Transaction(
         signerId: signedTx.transaction.signerId,
-        publicKey: ab.publicKey,
+        publicKey: pubk,
         nonce: signedTx.transaction.nonce,
         receiverId: signedTx.transaction.receiverId,
         actions: signedTx.transaction.actions,
