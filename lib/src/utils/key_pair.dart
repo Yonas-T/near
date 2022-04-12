@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:tweetnacl/tweetnacl.dart';
 
 keyTypeToStr(keyType) {
@@ -90,8 +91,8 @@ class PublicKey {
 }
 
 class KeyPair {
-  var secretKey;
-  var publicKey;
+  String? secretKey;
+  String? publicKey;
   KeyPair({
     required this.secretKey,
     required this.publicKey,
@@ -140,16 +141,18 @@ class KeyPair {
     // const signature = nacl.sign.detached(message, base_decode(this.secretKey));
 
     Uint8List bytes = Uint8List.fromList(message.codeUnits);
-    var secretKey =
-        'ed25519:2Wjwq5xTaRii9mGaUZSZJcKBZhsa4HadLfUjuaZwnPtDgn57a46JT3JwSudxavAtSowqk41SWRsLa3g4LwJSUumL';
-    Uint8List secretKeyBytes = Uint8List.fromList(secretKey.codeUnits);
+    var publicKey = getPublicKey();
+    var secKey = secretKey;
+    Uint8List secretKeyBytes = Uint8List.fromList(secretKey!.codeUnits);
     Signature s1 = Signature(null, secretKeyBytes);
     Uint8List signature = s1.detached(bytes);
-    print("signature: \"${TweetNaclFast.hexEncodeToString(signature)}\"");
+    if (kDebugMode) {
+      print("signature: \"${TweetNaclFast.hexEncodeToString(signature)}\"");
+    }
 
     return {
       'signature': TweetNaclFast.hexEncodeToString(signature),
-      'publicKey': 'ed25519:GWK3q7JG37ji9RupLurUT9hEa5S6pqUeiq4JxNktZtN6'
+      'publicKey': publicKey
     };
   }
 }
