@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+Features available: 
+Authentication, Transaction, Sending Tokens, View and Change Methods, Nft

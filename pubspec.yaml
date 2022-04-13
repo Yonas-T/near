@@ -1,7 +1,7 @@
 name: near_flutter
-description: A new Flutter package project.
+description: A near-flutter package.
 version: 0.0.1
-homepage:
+repository: "https://github.com/Yonas-T/near"
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
@@ -13,11 +13,9 @@ dependencies:
   http: ^0.13.4
   webview_flutter: ^3.0.0
   flutter_inappwebview: ^5.3.2
-  json_rpc_2: ^3.0.1
+
   shared_preferences: ^2.0.13
   pinenacl: ^0.3.3
-  # borsh: ^0.2.0+1
-  # pointycastle: ^3.5.1
   tweetnacl: ^0.3.2
   js: ^0.6.3
   bs58: ^1.0.2

@@ -134,12 +134,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "json_rpc_2",
-      "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/json_rpc_2-3.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "lints",
       "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1",
       "packageUri": "lib/",
@@ -321,13 +315,13 @@
     },
     {
       "name": "webview_flutter",
-      "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-3.0.1",
+      "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-3.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "webview_flutter_android",
-      "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.8.3",
+      "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.8.5",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -339,7 +333,7 @@
     },
     {
       "name": "webview_flutter_wkwebview",
-      "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.7.1",
+      "rootUri": "file:///Users/yonastadesse/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.7.2",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -362,7 +356,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-04-11T21:12:31.226404Z",
+  "generated": "2022-04-13T21:53:20.420502Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }
